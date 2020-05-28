@@ -23,6 +23,9 @@ class UploadController extends Controller
         if (!empty($value)) {
             return '₱ '.number_format($value,2,'.',",");
         }
+        if ($value == 0) {
+            return '₱ 0.00';
+        }
         return $value;
     }
 
@@ -600,6 +603,17 @@ class UploadController extends Controller
                 $templateProcessor->setValue('cb15', $cb15);
                 $templateProcessor->setValue('t5c', $total_score_5c);
 
+                $igp1='';
+                $igp2='';
+                $igp1_mgi=$this->currency(0);
+                $igp2_mgi=$this->currency(0);
+                $e_mgi=$this->currency(0);
+
+                $templateProcessor->setValue('igp1', $igp1);
+                $templateProcessor->setValue('igp2', $igp2);
+                $templateProcessor->setValue('igp1_mgi', $igp1_mgi);
+                $templateProcessor->setValue('igp2_mgi', $igp2_mgi);
+                $templateProcessor->setValue('e_mgi', $e_mgi);
 
 
                 
